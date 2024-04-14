@@ -1,0 +1,58 @@
+﻿<Window x:Class="AddressBook.ViewerWpfApp.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:AddressBook.ViewerWpfApp"
+		mc:Ignorable="d"
+		Title="MainWindow" Height="450" Width="800">
+	<!--<ScrollViewer  >-->
+    <Grid x:Name="MainGrid" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Button x:Name="Open" Content="Otvoriť..." HorizontalAlignment="Left" Margin="0,10" Padding="5" Grid.Row="0" Click="Open_Click"/>
+            <TextBlock Text="Meno / Priezvisko:" Grid.Row="1"/>
+            <TextBox x:Name="FullName" Margin="0,10" Grid.Row="2"/>
+            <TextBlock Text="Funkcia:" Margin="0,10" Grid.Row="3"/>
+            <ComboBox x:Name="Position" Grid.Row="4"/>
+            <TextBlock Text="Pracovisko:" Margin="0,10" Grid.Row="5"/>
+            <ComboBox x:Name="Workplace" Grid.Row="6"/>
+            <Grid Margin="0,10" Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="FindEmployee" Content="Vyhľadať zamestnanca" Padding="5" Margin="5" Grid.Column="0" Click="FindEmployee_Click"/>
+                <Button x:Name="ResetSearch" Content="Resetovať vyhľadávanie" Padding="5" Margin="5" Grid.Column="1" Click="ResetSearch_Click"/>
+            </Grid>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="8">
+            <RichTextBox x:Name="OutputText" IsReadOnly="True">
+                <FlowDocument PageWidth="800">
+                    <Paragraph >
+                        <Run Text=""/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            </ScrollViewer>
+
+            <Grid Margin="0,10" Grid.Row="9" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+			<TextBlock x:Name="EmployeeCount" Text="Počet nájdených zamestnancov: " HorizontalAlignment="Left" Grid.Column="0"/>
+			<Button x:Name="ExportToCSV" Content="Exportovať vyhľadávanie do CSV..." HorizontalAlignment="Right" Grid.Column="1" Click="ExportToCSV_Click"/>
+		</Grid>
+	</Grid>
+	<!--</ScrollViewer>-->
+</Window>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AddressBook.ViewerConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "--input \"C:\\\\Users\\\\Pavol Žigo\\\\source\\\\repos\\\\AddressBook\\\\AddressBook.ViewerConsoleApp\\\\employees.json\" --position dekan"
+    }
+  }
+}
