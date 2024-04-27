@@ -7,6 +7,58 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="Súbor">
+                <MenuItem x:Name="New" Header="Nový" Click="New_OnClick"/>
+                <MenuItem x:Name="Open" Header="Otvoriť" Click="Open_OnClick"/>
+                <MenuItem x:Name="SaveAs" Header="Uložiť ako" Click="SaveAs_OnClick"/>
+                <Separator/>
+                <MenuItem x:Name="Exit" Header="Skončiť" Click="Exit_OnClick"/>
+            </MenuItem>
+            <MenuItem Header="Úpravy">
+                <MenuItem x:Name="AddMenu" Header="Pridať" Click="AddMenu_OnClick"/>
+                <MenuItem x:Name="EditMenu" Header="Editovať"/>
+                <MenuItem x:Name="EraseMenu" Header="Odstrániť" Click="EraseMenu_OnClick"/>
+            </MenuItem>
+            <MenuItem Header="Pomocník">
+                <MenuItem x:Name="About" Header="O programe..." Click="About_OnClick"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddEmployee" Grid.Column="0" Content="Pridať..." Padding="5" Margin="5" Click="AddEmployee_OnClick"/>
+            <Button x:Name="EditEmployee" Grid.Column="1" Content="Editovať..." Padding="5" Margin="5" Click="EditEmployee_OnClick"/>
+            <Button x:Name="EraseEmployee" Grid.Column="2" Content="Odstrániť" Padding="5" Margin="5" Click="EraseEmployee_Click"/>
+            <TextBlock x:Name="CountEmployees" Grid.Column="3" Text="Počet: " Padding="5" Margin="5"/>
+            <Button x:Name="SearchButton" Grid.Column="4" Content="Vyhľadávať..." Padding="5" Margin="5" HorizontalAlignment="Right" Click="SearchButton_Click"/>
+        </Grid>
+        <ListView x:Name="EmployeesView" SelectionChanged="EmployeesView_OnSelectionChanged" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Zamestnanec" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Funkcia" Width="Auto" DisplayMemberBinding="{Binding Position}"/>
+                    <GridViewColumn Header="Telefón" Width="Auto" DisplayMemberBinding="{Binding Phone}"/>
+                    <GridViewColumn Header="E-mail" Width="Auto" DisplayMemberBinding="{Binding Email}"/>
+                    <GridViewColumn Header="Miestnosť" Width="Auto" DisplayMemberBinding="{Binding Room}"/>
+                    <GridViewColumn Header="Hlavné pracovisko" Width="Auto" DisplayMemberBinding="{Binding MainWorkplace}"/>
+                    <GridViewColumn Header="Pracovisko" Width="Auto" DisplayMemberBinding="{Binding Workplace}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

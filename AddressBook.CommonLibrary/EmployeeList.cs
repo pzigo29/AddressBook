@@ -5,7 +5,7 @@ namespace AddressBook.CommonLibrary
 {
     public class EmployeeList : ObservableCollection<Employee>
     {
-
+        
         public static EmployeeList? LoadFromJson(FileInfo jsonFile)
         {
             try
