@@ -5,9 +5,9 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:AddressBook.ViewerWpfApp"
 		mc:Ignorable="d"
-		Title="MainWindow" Height="450" Width="800">
+		Title="Adresár zamestnancov" Height="450" Width="800">
 	<!--<ScrollViewer  >-->
-    <Grid x:Name="MainGrid" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+    <Grid Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -32,8 +32,8 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="FindEmployee" Content="Vyhľadať zamestnanca" Padding="5" Margin="5" Grid.Column="0" Click="FindEmployee_Click"/>
-                <Button x:Name="ResetSearch" Content="Resetovať vyhľadávanie" Padding="5" Margin="5" Grid.Column="1" Click="ResetSearch_Click"/>
+                <Button Content="Vyhľadať zamestnanca" Padding="5" Margin="5" Grid.Column="0" Click="FindEmployee_Click" IsDefault="True"/>
+                <Button Content="Resetovať vyhľadávanie" Padding="5" Margin="5" Grid.Column="1" Click="ResetSearch_Click"/>
             </Grid>
             <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="8">
             <RichTextBox x:Name="OutputText" IsReadOnly="True">
@@ -50,8 +50,8 @@
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="*"/>
 				</Grid.ColumnDefinitions>
-			<TextBlock x:Name="EmployeeCount" Text="Počet nájdených zamestnancov: " HorizontalAlignment="Left" Grid.Column="0"/>
-			<Button x:Name="ExportToCSV" Content="Exportovať vyhľadávanie do CSV..." HorizontalAlignment="Right" Grid.Column="1" Click="ExportToCSV_Click"/>
+			<TextBlock x:Name="EmployeeCount" HorizontalAlignment="Left" Grid.Column="0"/>
+			<Button Content="Exportovať vyhľadávanie do CSV..." HorizontalAlignment="Right" Grid.Column="1" Click="ExportToCSV_Click"/>
 		</Grid>
 	</Grid>
 	<!--</ScrollViewer>-->

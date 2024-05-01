@@ -22,7 +22,7 @@ namespace AddressBook.CommonLibrary
             }
             catch(Exception)
             {
-                Console.Error.WriteLine(new Exception("Error while saving to JSON"));
+                Console.Error.WriteLine(new Exception("Error while loading from JSON"));
                 return null;
             }
         }
@@ -33,6 +33,10 @@ namespace AddressBook.CommonLibrary
                 var jsonString = JsonSerializer.Serialize(this);
                 using StreamWriter writer = jsonFile.CreateText();
                 writer.Write(jsonString);
+            }
+            catch (FileNotFoundException)
+            {
+                Console.Error.WriteLine(new FileNotFoundException("File not found"));
             }
             catch(Exception)
             {
@@ -64,7 +68,7 @@ namespace AddressBook.CommonLibrary
             }
             if (name != null)
             {
-                employees = employees.Where(e => e.Name != null && e.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+                employees = employees.Where(e => e.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
             }
             return new SearchResult(employees.ToArray());
         }

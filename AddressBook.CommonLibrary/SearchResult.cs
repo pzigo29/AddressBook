@@ -1,5 +1,4 @@
-﻿
-namespace AddressBook.CommonLibrary
+﻿namespace AddressBook.CommonLibrary
 {
     public class SearchResult(Employee[] employees)
     {

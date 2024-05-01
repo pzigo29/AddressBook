@@ -1,12 +1,10 @@
-﻿
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel;
 
 namespace AddressBook.CommonLibrary
 {
-	public record class Employee : INotifyPropertyChanged
+	public record Employee : INotifyPropertyChanged
 	{
-        public static bool IsPropertyChanged { get; private set; }
+        public static bool IsPropertyChanged { get; set; }
 
         public Employee(string name, string position, string email, string? phone = null, string? room = null, string? mainWorkplace = null, string? workplace = null)
 		{

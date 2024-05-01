@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using AddressBook.CommonLibrary;
 using Microsoft.Win32;
 
@@ -32,12 +20,9 @@ namespace AddressBook.EditorWpfApp
 
             Position.ItemsSource = Employees?.GetPositions();
             Workplace.ItemsSource = Employees?.GetMainWorkplaces();
-        }
 
-        //public ViewWindow(Employee[] employees)
-        //{
-        //    Employees = employees;
-        //}
+            ShowEmployeeCount();
+        }
 
         private void FindEmployee_Click(object sender, RoutedEventArgs e)
         {
@@ -46,15 +31,7 @@ namespace AddressBook.EditorWpfApp
                 OutputText.Document.Blocks.Clear();
             }
             SearchResult = Employees?.Search(Workplace.SelectedItem?.ToString(), Position.SelectedItem?.ToString(), FullName.Text);
-            EmployeeCount.Inlines.Clear();
-            var count = SearchResult?.Employees.Length;
-            var countText = $"{count}";
-            var boldRun = new Run(countText)
-            {
-                FontWeight = FontWeights.Bold
-            };
-            EmployeeCount.Inlines.Add("Počet nájdených zamestnancov: ");
-            EmployeeCount.Inlines.Add(boldRun);
+            ShowEmployeeCount();
             if (SearchResult != null)
             {
                 foreach (var emp in SearchResult.Employees)
@@ -99,8 +76,20 @@ namespace AddressBook.EditorWpfApp
             Position.SelectedIndex = -1;
             Workplace.SelectedIndex = -1;
             OutputText.Document.Blocks.Clear();
+            ShowEmployeeCount();
+        }
+
+        private void ShowEmployeeCount()
+        {
             EmployeeCount.Inlines.Clear();
+            var count = SearchResult?.Employees.Length ?? 0;
+            var countText = $"{count}";
+            var boldRun = new Run(countText)
+            {
+                FontWeight = FontWeights.Bold
+            };
             EmployeeCount.Inlines.Add("Počet nájdených zamestnancov: ");
+            EmployeeCount.Inlines.Add(boldRun);
         }
     }
 }

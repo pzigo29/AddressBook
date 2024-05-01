@@ -16,7 +16,16 @@ namespace AddressBook.ViewerWpfApp
 		public MainWindow()
 		{
 			InitializeComponent();
-		}
+			EmployeeCount.Inlines.Clear();
+            var count = SearchResult?.Employees.Length ?? 0;
+            var countText = $"{count}";
+            var boldRun = new Run(countText)
+            {
+                FontWeight = FontWeights.Bold
+            };
+            EmployeeCount.Inlines.Add("Počet nájdených zamestnancov: ");
+            EmployeeCount.Inlines.Add(boldRun);
+        }
 
 		private void FindEmployee_Click(object sender, RoutedEventArgs e)
 		{
